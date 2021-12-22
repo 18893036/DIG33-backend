@@ -1,73 +1,18 @@
+// dependencies
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const Utils = require('./../utils')
 require('mongoose-type-email')
 
-// schema
+//  schema
 const userSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    require: true
-  },
-  lastName: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: mongoose.SchemaTypes.Email,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  bio: {
-    type: String
-  },
-  avatar: {
-    type: String
-  },
-  accessLevel: {
-    type: Number,
-    required: true
-  },
-  newUser: {
-    type: Boolean,
-    default: true
-  },
-  client: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  favouriteHaircuts: [
-    { type: Schema.ObjectId, ref: 'Haircut' }
-  ],
+    firstName: {
+        type: String,
+        require: true
+    }
+}, {timestamps: true})
 
-  favouriteExercises: [
-    { type: Schema.ObjectId, ref: 'Exercise' }
-  ],
+// create the mongoose model
+const userModel = mongoose.model('User', userSchema, 'users')   // this part is what matches the DB collection title, but Mongoose does some filtering of upper or lower case, and can pluralise words, so the third option passed in is the exact collection name
 
-  program: [
-    { type: Schema.ObjectId, ref: 'Program' }
-  ]
-
-}, { timestamps: true })
-
-// encrypt password field on save
-userSchema.pre('save', function (next) {
-  // check if password is present and is modifed  
-  if (this.password && this.isModified()) {
-    this.password = Utils.hashPassword(this.password);
-  }
-  next()
-})
-
-// model
-const userModel = mongoose.model('User', userSchema)
-
-// export
+// export as module to use in other files
 module.exports = userModel
-
-
-
-
