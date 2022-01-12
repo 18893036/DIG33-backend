@@ -47,9 +47,9 @@ router.post('/', (req, res) => {
 
     // create ciders if req above is good and data is in the body
     const newCiders = new Ciders({
-        ciderTitle: req.body.pigProduct,
-        ciderType: req.body.dishName,
-        ciderSlogan: req.body.ingredients,
+        ciderTitle: req.body.ciderTitle,
+        ciderType: req.body.ciderType,
+        ciderSlogan: req.body.ciderSlogan,
         image: req.body.image
     })
 
