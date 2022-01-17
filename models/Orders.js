@@ -6,10 +6,10 @@ require('mongoose-type-email')
 const ordersSchema= mongoose.Schema({
     name : {type: String , require: true},
     email: {type: String , require: true},
-    userid : {type: String , require: true},
-    orderItems : [],
+//    userid : {type: String , require: true},
+//    orderItems : [],
 //    shippingAddress : {type: Object, require: false},
-    orderAmount : {type:Number , require: true}
+//    orderAmount : {type:Number , require: true}
 //    isDelivered : {type:Boolean , require: false , default: false},
 //    transactionId : {type:String , require: false }
 },{
