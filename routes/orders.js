@@ -2,10 +2,10 @@
 const express = require("express")
 const router = express.Router()
 const Order = require("./../models/Orders")
-const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")(
-  process.env.SECRET_KEY
-);
+//const { v4: uuidv4 } = require("uuid");
+//const stripe = require("stripe")(
+//  process.env.SECRET_KEY
+//);
 
 
 // GET all orders
