@@ -52,7 +52,7 @@ const pizzasRouter = require("./routes/pizzas")
 app.use('/pizzas', pizzasRouter)
 
 // orders route
-const ordersRouter = require("./routes/orders")
+const ordersRouter = require("./routes/pizzas")
 app.use('/orders', ordersRouter)
 
 
