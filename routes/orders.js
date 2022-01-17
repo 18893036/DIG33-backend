@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
             name: currentUser.name,
             email: currentUser.email,
             userid: currentUser._id,
-            orderItems: cartItems,
+    //        orderItems: cartItems,
             orderAmount: subtotal
     })
 
