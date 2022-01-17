@@ -37,10 +37,10 @@ router.post('/', (req, res) => {
     const newOrder = new Order({
 
             name: currentUser.name,
-            email: currentUser.email,
-            userid: currentUser._id,
+            email: currentUser.email
+    //        userid: currentUser._id,
     //        orderItems: cartItems,
-            orderAmount: subtotal
+    //        orderAmount: subtotal
     })
 
     // save newPairings document to the database
