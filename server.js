@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 })
 
 // user route
-const userRouter = require("./routes/user")
+const userRouter = require("./routes/users")
 app.use('/user', userRouter)
 
 // auth route
