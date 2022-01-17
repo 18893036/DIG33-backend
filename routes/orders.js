@@ -2,10 +2,10 @@
 const express = require("express")
 const router = express.Router()
 const Order = require("./../models/Orders")
-const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")(
-  'sk_test_51KItkLKHNoE5NY8LKOc2yS59ztSCqXT1dmIZb51LjY05XGE5uVFAdkzKtxi6aSoCvREllrf8VWw5o9tGBxuCh9bo00IaesWPCk'
-);
+//const { v4: uuidv4 } = require("uuid");
+//const stripe = require("stripe")(
+//  'sk_test_51KItkLKHNoE5NY8LKOc2yS59ztSCqXT1dmIZb51LjY05XGE5uVFAdkzKtxi6aSoCvREllrf8VWw5o9tGBxuCh9bo00IaesWPCk'
+//);
 
 
 // GET all orders
@@ -19,6 +19,49 @@ router.get('/', (req, res) => {
             console.log("Problem getting orders", err)
         })
 })
+
+
+
+
+
+// POST - create new order ------------------------------------------------------------------
+router.post('/', (req, res) => {
+    // console.log("Request body =", req.body)          // log request body that was sent
+    if (!req.body) {
+        return res.status(400).json({
+            message: "orders content is empty"
+        })
+    }
+
+    // create pairings if req above is good and data is in the body
+    const newOrder = new Order({
+
+            name: currentUser.name,
+            email: currentUser.email,
+            userid: currentUser._id,
+            orderItems: cartItems,
+            orderAmount: subtotal
+    })
+
+    // save newPairings document to the database
+    newOrder.save()
+        .then((order) => {
+            // send back 201 status and new pairings object
+            res.status(201).json(order)
+        })
+        .catch((err) => {
+            console.log("error getting order", err)
+            res.status(500).json({
+                message: "problem getting order",
+                error: err
+            })
+        })
+})
+
+
+
+
+
 
 router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
@@ -47,14 +90,14 @@ router.post("/placeorder", async (req, res) => {
         email: currentUser.email,
         userid: currentUser._id,
         orderItems: cartItems,
-        orderAmount: subtotal,
-        shippingAddress: {
-          street: token.card.address_line1,
-          city: token.card.address_city,
-          country: token.card.address_country,
-          pincode: token.card.address_zip,
-        },
-        transactionId: payment.source.id,
+        orderAmount: subtotal
+//        shippingAddress: {
+//          street: token.card.address_line1,
+//          city: token.card.address_city,
+//          country: token.card.address_country,
+//          pincode: token.card.address_zip,
+//        },
+//        transactionId: payment.source.id,
       });
 
       neworder.save();
