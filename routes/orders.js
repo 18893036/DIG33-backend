@@ -36,7 +36,8 @@ router.post('/', (req, res) => {
     // create pairings if req above is good and data is in the body
     const newOrder = new Order({
         name: req.body.name,
-        email: req.body.email
+        email: req.body.email,
+        userid: req.body._id
 
     //        name: currentUser.name,
     //        email: currentUser.email
