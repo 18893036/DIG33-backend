@@ -14,7 +14,7 @@ const userSchema = mongoose.Schema({
 })
 
 // create the mongoose model
-const userModel = mongoose.model('Users', userSchema, 'users')   // this part is what matches the DB collection title, but Mongoose does some filtering of upper or lower case, and can pluralise words, so the third option passed in is the exact collection name
+const userModel = mongoose.model('User', userSchema, 'users')   // this part is what matches the DB collection title, but Mongoose does some filtering of upper or lower case, and can pluralise words, so the third option passed in is the exact collection name
 
 // export as module to use in other files
 module.exports = userModel
