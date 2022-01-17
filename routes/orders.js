@@ -56,7 +56,7 @@ router.post("/placeorder", async (req, res) => {
     return res.status(400).json({ message: "Something went wrong" + error });
   }
 });
-
+/*
 router.post("/getuserorders", async (req, res) => {
   const { userid } = req.body;
   try {
@@ -87,5 +87,5 @@ router.post("/deliverorder", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
-
+*/
 module.exports = router;
