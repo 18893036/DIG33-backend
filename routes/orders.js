@@ -8,6 +8,19 @@ const stripe = require("stripe")(
 );
 
 
+
+// GET all merchandise
+router.get('/', (req, res) => {
+    // get all merchandise from the Merchandise model using the find() method
+    Order.find()
+        .then((orders) => {
+            res.json(orders)
+        })
+        .catch((err) => {
+            console.log("Problem getting orders", err)
+        })
+})
+
 router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
 
