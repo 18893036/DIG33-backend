@@ -40,7 +40,6 @@ app.get('/cors', (req, res) => {
 // routes
 // homepage route
 app.get('/', (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
     res.send("This is the homepage")
 })
 
@@ -58,7 +57,6 @@ app.use('/merchandise', merchandiseRouter)
 
 // pairings route
 const pairingsRouter = require("./routes/pairings")
-res.set('Access-Control-Allow-Origin', '*');
 app.use('/pairings', pairingsRouter)
 
 // ciders route
