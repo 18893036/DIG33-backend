@@ -133,7 +133,7 @@ router.post("/deleteuser", async(req, res) => {
 
 // -------------------------------------------------------------------------------------
 router.post("/login", async(req, res) => {
-
+    console.log("Attempting login")
     const {email , password} = req.body
 
     try {
