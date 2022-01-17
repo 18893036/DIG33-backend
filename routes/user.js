@@ -16,6 +16,23 @@ router.get('/', (req, res) => {
 })
 
 
+
+// another GET all users
+router.get("/getallusers", async(req, res) => {
+
+    try {
+        const users = await User.find({})
+        res.send(users)
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+  
+});
+
+
+
+
+
 // GET - get single user by an ID, the variable parameter is stored in req.params.id -------
 router.get('/:id', (req, res) => {
     User.findById(req.params.id)
@@ -37,7 +54,7 @@ router.get('/:id', (req, res) => {
 
 
 // POST - create new user ------------------------------------------------------------------
-router.post('/', (req, res) => {
+router.post('/register', (req, res) => {
     // console.log("Request body =", req.body)          // log request body that was sent
     if (!req.body) {
         return res.status(400).json({
@@ -46,10 +63,8 @@ router.post('/', (req, res) => {
     }
 
     // create user if req above is good and data is in the body
-    const newUser = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName
-    })
+    const {name , email , password} = req.body
+    const newUser = new User({name , email , password})
 
     // save newUser document to the database
     newUser.save()
@@ -65,6 +80,10 @@ router.post('/', (req, res) => {
             })
         })
 })
+
+/* router.post("/register", async(req, res) => { */
+  
+
 
 
 
@@ -94,33 +113,78 @@ router.put('/:id', (req, res) => {
 
 
 // DELETE - delete user by ID --------------------------------------------------------------
-router.delete('/:id', (req, res) => {
-    // validate that there is a user id
-    if(!req.params.id){
-        return res.status(400).json({
-            message: "User id is missing!"
-        })
+router.post("/deleteuser", async(req, res) => {
+  
+    const userid = req.body.userid
+
+    try {
+        await User.findOneAndDelete({_id : userid})
+        res.send('User Deleted Successfully')
+    } catch (error) {
+        return res.status(400).json({ message: error });
     }
 
-    // delete the user using the User model
-    User.findOneAndDelete({_id: req.params.id})
-        .then(() => {
-            res.json({
-                message: "User deleted"
-            })
-        })
-        .catch((err) => {
-            console.log("error deleting user", err)
-            res.status(500).json({
-                message: "problem deleting user",
-                error: err
-            })
-        })
+});
+
+
+
+
+
+
+// -------------------------------------------------------------------------------------
+router.post("/login", async(req, res) => {
+
+    const {email , password} = req.body
+
+    try {
         
-})
+        const user = await User.find({email , password})
 
+        if(user.length > 0)
+        {
+            const currentUser = {
+                name : user[0].name , 
+                email : user[0].email, 
+                isAdmin : user[0].isAdmin, 
+                _id : user[0]._id
+            }
+            res.send(currentUser);
+        }
+        else{
+            return res.status(400).json({ message: 'User Login Failed' });
+        }
 
-
+    } catch (error) {
+           return res.status(400).json({ message: 'Something went weong' });
+    }
+  
+});
 
 
 module.exports = router
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
+
+
+
+
+
+router.get("/getallusers", async(req, res) => {
+
+    try {
+        const users = await User.find({})
+        res.send(users)
+    } catch (error) {
+        return res.status(400).json({ message: error });
+    }
+  
+});
+
+
+
+
+
