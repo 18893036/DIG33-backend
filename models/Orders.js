@@ -8,10 +8,10 @@ const ordersSchema= mongoose.Schema({
     email: {type: String , require: true},
     userid : {type: String , require: true},
     orderItems : [],
-    shippingAddress : {type: Object, require: false},
-    orderAmount : {type:Number , require: true},
-    isDelivered : {type:Boolean , require: false , default: false},
-    transactionId : {type:String , require: false }
+//    shippingAddress : {type: Object, require: false},
+    orderAmount : {type:Number , require: true}
+//    isDelivered : {type:Boolean , require: false , default: false},
+//    transactionId : {type:String , require: false }
 },{
     timestamps : true
 })
