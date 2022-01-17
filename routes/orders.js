@@ -8,6 +8,17 @@ const stripe = require("stripe")(
 );
 
 
+// GET all orders
+router.get('/', (req, res) => {
+    // get all orders from the orders model using the find() method
+    Order.find()
+        .then((orders) => {
+            res.json(orders)
+        })
+        .catch((err) => {
+            console.log("Problem getting orders", err)
+        })
+})
 /*
 router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
@@ -65,7 +76,7 @@ router.post("/getuserorders", async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" });
   }
-});*/
+});
 
 router.get("/getallorders", async (req, res) => {
   try {
@@ -75,7 +86,7 @@ router.get("/getallorders", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
-/*
+
 router.post("/deliverorder", async (req, res) => {
   const orderid = req.body.orderid;
   try {
