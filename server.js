@@ -69,10 +69,6 @@ app.use('/ciders', cidersRouter)
 const pizzasRouter = require("./routes/pizzas")
 app.use('/pizzas', pizzasRouter)
 
-// orders route
-//const ordersRouter = require("./routes/orders")
-//app.use('/orders', ordersRouter)
-
 // run app (listen on a port).  This actually runs the app.
 app.listen(port, () => {
     console.log("App is running on port ", port)
