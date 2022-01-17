@@ -3,9 +3,9 @@ const express = require("express")
 const router = express.Router()
 const Order = require("./../models/Orders")
 //const { v4: uuidv4 } = require("uuid");
-//const stripe = require("stripe")(
-//  process.env.SECRET_KEY
-//);
+const stripe = require("stripe")(
+  process.env.SECRET_KEY
+);
 
 
 // GET all orders
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
             console.log("Problem getting orders", err)
         })
 })
-/*
+
 router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
 
@@ -37,7 +37,7 @@ router.post("/placeorder", async (req, res) => {
         receipt_email: token.email,
       },
       {
-        idempotencyKey: uuidv4(),
+//        idempotencyKey: uuidv4(),
       }
     );
 
@@ -97,6 +97,6 @@ router.post("/deliverorder", async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: error });
   }
-});*/
+});
 
 module.exports = router;
