@@ -8,7 +8,7 @@ const stripe = require("stripe")(
 );
 
 
-
+/*
 router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
 
@@ -56,7 +56,7 @@ router.post("/placeorder", async (req, res) => {
     return res.status(400).json({ message: "Something went wrong" + error });
   }
 });
-/*
+
 router.post("/getuserorders", async (req, res) => {
   const { userid } = req.body;
   try {
