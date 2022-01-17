@@ -35,10 +35,6 @@ app.get('/', (req, res) => {
 const userRouter = require("./routes/user")
 app.use('/users', userRouter)
 
-// auth route
-const authRouter = require("./routes/auth")
-app.use('/auth', authRouter)
-
 // merchandise route
 const merchandiseRouter = require("./routes/merchandise")
 app.use('/merchandise', merchandiseRouter)
@@ -56,8 +52,8 @@ const pizzasRouter = require("./routes/pizzas")
 app.use('/pizzas', pizzasRouter)
 
 // orders route
-//const ordersRouter = require("./routes/orders")
-//app.use('/orders', ordersRouter)
+const ordersRouter = require("./routes/orders")
+app.use('/orders', ordersRouter)
 
 
 

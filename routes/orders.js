@@ -8,7 +8,7 @@ const stripe = require("stripe")(
 );
 
 
-
+/*
 router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
 
@@ -65,7 +65,7 @@ router.post("/getuserorders", async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" });
   }
-});
+});*/
 
 router.get("/getallorders", async (req, res) => {
   try {
@@ -75,7 +75,7 @@ router.get("/getallorders", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
-
+/*
 router.post("/deliverorder", async (req, res) => {
   const orderid = req.body.orderid;
   try {
@@ -86,6 +86,6 @@ router.post("/deliverorder", async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: error });
   }
-});
+});*/
 
 module.exports = router;
