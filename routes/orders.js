@@ -3,9 +3,9 @@ const express = require("express")
 const router = express.Router()
 const Order = require("./../models/Orders")
 //const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")(
-  process.env.SECRET_KEY
-);
+//const stripe = require("stripe")(
+//  process.env.SECRET_KEY
+//);
 
 
 // GET all orders
@@ -37,7 +37,7 @@ router.post("/placeorder", async (req, res) => {
         receipt_email: token.email,
       },
       {
-//        idempotencyKey: uuidv4(),
+        idempotencyKey: uuidv4(),
       }
     );
 
@@ -67,7 +67,7 @@ router.post("/placeorder", async (req, res) => {
     return res.status(400).json({ message: "Something went wrong" + error });
   }
 });
-
+/*
 router.post("/getuserorders", async (req, res) => {
   const { userid } = req.body;
   try {
@@ -98,5 +98,5 @@ router.post("/deliverorder", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
-
+*/
 module.exports = router;
