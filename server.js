@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
 })
 
 // user route
-const userRouter = require("./routes/users")
-app.use('/user', userRouter)
+const userRouter = require("./routes/user")
+app.use('/users', userRouter)
 
 // auth route
 const authRouter = require("./routes/auth")
