@@ -77,7 +77,7 @@ router.post("/getuserorders", async (req, res) => {
     return res.status(400).json({ message: "Something went wrong" });
   }
 });
-/*
+
 router.get("/getallorders", async (req, res) => {
   try {
     const orders = await Order.find({});
@@ -86,7 +86,7 @@ router.get("/getallorders", async (req, res) => {
     return res.status(400).json({ message: error });
   }
 });
-
+/*
 router.post("/deliverorder", async (req, res) => {
   const orderid = req.body.orderid;
   try {
