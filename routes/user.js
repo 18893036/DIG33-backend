@@ -132,7 +132,7 @@ router.post("/deleteuser", async(req, res) => {
 
 
 // -------------------------------------------------------------------------------------
-router.post("/login", async(req, res) => {
+ router.post("/login", async(req, res) => {
     console.log("Attempting login")
     const {email , password} = req.body
 
@@ -158,7 +158,51 @@ router.post("/login", async(req, res) => {
            return res.status(400).json({ message: 'Something went weong' });
     }
   
-});
+});  
+
+
+
+// --------------------------------------------------------------------------------------
+router.post('/signin', (req, res) => {
+    // 1. check if email and passwore are empty
+    if( !req.body.email || !req.body.password ){     
+      return res.status(400).json({message: "Please provide email and password"})
+    }
+    // 2. continue to check credentials
+    // find the user in the database
+    User.findOne({email: req.body.email})
+    .then(async user => {
+       // account doesn't exist
+       if(user == null) return res.status(400).json({message: 'No account found'})     
+       // user exists, now check password
+       if( Utils.verifyHash(req.body.password, user.password) ){
+          // credentials match - create JWT token
+          let payload = {
+            _id: user._id          
+          }
+          let accessToken = Utils.generateAccessToken(payload)        
+          // strip the password from our user object        
+          user.password = undefined
+          // send back response
+          return res.json({
+            accessToken: accessToken,
+            user: user
+          })
+       }else{
+          // Password didn't match!
+          return res.status(400).json({
+             message: "Password / Email incorrect"
+          })        
+       }
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: "account doesn't exist",
+        error: err
+      })
+    })
+  })
 
 
 module.exports = router
