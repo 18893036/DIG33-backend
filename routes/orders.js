@@ -93,14 +93,14 @@ router.post("/placeorder", async (req, res) => {
           email: currentUser.email,
           userid: currentUser._id,
           orderItems: cartItems,
-          orderAmount: subtotal,
-          shippingAddress: {
-            street: token.card.address_line1,
-            city: token.card.address_city,
-            country: token.card.address_country,
-            pincode: token.card.address_zip,
-          },
-          transactionId: payment.source.id,
+          orderAmount: subtotal
+//          shippingAddress: {
+//           street: token.card.address_line1,
+//            city: token.card.address_city,
+//            country: token.card.address_country,
+//            pincode: token.card.address_zip,
+//          },
+//          transactionId: payment.source.id,
         });
   
         neworder.save();
