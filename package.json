@@ -18,7 +18,8 @@
     "express-jwt": "^6.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.2",
-    "mongoose-type-email": "^1.1.2"
+    "mongoose-type-email": "^1.1.2",
+    "stripe": "^8.197.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
