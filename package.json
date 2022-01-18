@@ -19,6 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.2",
     "mongoose-type-email": "^1.1.2",
+    "react-stripe-checkout": "^2.6.3",
     "stripe": "^8.197.0"
   },
   "devDependencies": {
