@@ -4,14 +4,14 @@ const Schema = mongoose.Schema
 require('mongoose-type-email')
 
 const ordersSchema= mongoose.Schema({
-    name : {type: String , require: true},
-    email: {type: String , require: true},
-//    userid : {type: String , require: true},
-//    orderItems : [],
-//    shippingAddress : {type: Object, require: false},
-//    orderAmount : {type:Number , require: true}
-//    isDelivered : {type:Boolean , require: false , default: false},
-//    transactionId : {type:String , require: false }
+    name : {type: String , require},
+    email: {type: String , require},
+    userid : {type: String , require},
+    orderItems : [],
+    shippingAddress : {type:Object},
+    orderAmount : {type:Number , require},
+    isDelivered : {type:Boolean , require , default: false},
+    transactionId : {type:String , require}
 },{
     timestamps : true
 })
