@@ -70,10 +70,7 @@ router.post("/placeorder", async (req, res) => {
   const { token, subtotal, currentUser, cartItems } = req.body;
 
   try {
-    const customer = await stripe.customers.create({
-      email: token.email,
-      source: token.id,
-    });
+
 
 
 
