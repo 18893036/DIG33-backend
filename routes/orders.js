@@ -37,11 +37,11 @@ router.post('/', (req, res) => {
     const newOrder = new Order({
         name: req.body.name,
         email: req.body.email,
-        userid: req.body._id
+    //    userid: req.body._id
 
     //        name: currentUser.name,
     //        email: currentUser.email
-    //        userid: currentUser._id,
+            userid: currentUser._id,
     //        orderItems: cartItems,
     //        orderAmount: subtotal
     })
