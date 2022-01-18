@@ -47,10 +47,12 @@ router.post('/', (req, res) => {
 
     // create Pizzas if req above is good and data is in the body
     const newPizzas = new Pizzas({
-        itemType: req.body.itemType,
-        itemName: req.body.itemName,
-        itemSize: req.body.itemSize,
-        itemCost: req.body.itemCost
+        name : pizza.name,
+        image :pizza.image,
+        varients : ['small','medium','large'],
+        description : pizza.description,
+        category : pizza.category,
+        prices : [pizza.prices]
     })
 
     // save newPizzas document to the database
