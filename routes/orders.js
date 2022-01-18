@@ -75,19 +75,9 @@ router.post("/placeorder", async (req, res) => {
       source: token.id,
     });
 
-    const payment = await stripe.charges.create(
-      {
-        amount: subtotal * 100,
-        currency: "inr",
-        customer: customer.id,
-        receipt_email: token.email,
-      },
-      {
-    //    idempotencyKey: uuidv4(),
-      }
-    );
 
-    if (payment) {
+
+   
       const neworder = new Order({
         name: currentUser.name,
         email: currentUser.email,
@@ -106,9 +96,7 @@ router.post("/placeorder", async (req, res) => {
       neworder.save();
 
       res.send("Order placed successfully");
-    } else {
-      res.send("Payment failed");
-    }
+
   } catch (error) {
     return res.status(400).json({ message: "Something went wrong" + error });
   }
