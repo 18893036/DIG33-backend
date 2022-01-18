@@ -3,9 +3,9 @@ const express = require("express")
 const router = express.Router()
 const Order = require("./../models/Orders")
 //const { v4: uuidv4 } = require("uuid");
-//const stripe = require("stripe")(
-//  'sk_test_51KItkLKHNoE5NY8LKOc2yS59ztSCqXT1dmIZb51LjY05XGE5uVFAdkzKtxi6aSoCvREllrf8VWw5o9tGBxuCh9bo00IaesWPCk'
-//);
+const stripe = require("stripe")(
+  'sk_test_51KItkLKHNoE5NY8LKOc2yS59ztSCqXT1dmIZb51LjY05XGE5uVFAdkzKtxi6aSoCvREllrf8VWw5o9tGBxuCh9bo00IaesWPCk'
+);
 
 
 // GET all orders
