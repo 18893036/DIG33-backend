@@ -11,11 +11,11 @@ const pizzaSchema = new mongoose.Schema({
     },
     varients: {
         type: [],
-        require: true
+        require: false
     },
     prices: {
         type: [],
-        require: true
+        require: false
     },
     category: {
         type: String,
