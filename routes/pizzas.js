@@ -49,10 +49,10 @@ router.post('/', (req, res) => {
     const newPizzas = new Pizzas({
         name : pizza.name,
         image :pizza.image,
-        varients : ['small','medium','large'],
+//        varients : ['small','medium','large'],
         description : pizza.description,
         category : pizza.category,
-        prices : [pizza.prices]
+//        prices : [pizza.prices]
     })
 
     // save newPizzas document to the database
