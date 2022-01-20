@@ -48,8 +48,8 @@ const cidersRouter = require("./routes/ciders")
 app.use('/ciders', cidersRouter)
 
 // pizzas route
-const pizzasRouter = require("./routes/pizzas")
-app.use('/pizzas', pizzasRouter)
+//const pizzasRouter = require("./routes/pizzas")
+//app.use('/pizzas', pizzasRouter)
 
 // orders route
 const ordersRouter = require("./routes/orders")
