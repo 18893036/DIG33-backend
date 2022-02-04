@@ -47,9 +47,8 @@ router.post('/', (req, res) => {
 
     // create contacts if req above is good and data is in the body
     const newContacts = new Contacts({
-        eventTitle: req.body.eventTitle,
-        eventLocation: req.body.eventTitle,
-        image: req.body.image
+        contactName: req.body.contactName,
+        contactEmail: req.body.contactEmail
     })
 
     // save newContacts document to the database
@@ -71,6 +70,7 @@ router.post('/', (req, res) => {
 
 
 // PUT - update a contacts by ID ---------------------------------------------------------------
+/*
 router.put('/:id', (req, res) => {
     if (!req.body) {
         return res.status(400).json({
@@ -91,7 +91,7 @@ router.put('/:id', (req, res) => {
             })
         })
 })
-
+*/
 
 
 // DELETE - delete contacts by ID --------------------------------------------------------------
