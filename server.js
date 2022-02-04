@@ -47,6 +47,10 @@ app.use('/pairings', pairingsRouter)
 const cidersRouter = require("./routes/ciders")
 app.use('/ciders', cidersRouter)
 
+// contacts route
+const contactsRouter = require("./routes/contacts")
+app.use('/contacts', contactsRouter)
+
 // pizzas route
 const pizzasRouter = require("./routes/pizzas")
 app.use('/pizzas', pizzasRouter)
