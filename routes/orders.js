@@ -33,23 +33,19 @@ router.post('/', (req, res) => {
         })
     }
 
-    // create pairings if req above is good and data is in the body
+    // create order if req above is good and data is in the body
     const newOrder = new Order({
         name: req.body.name,
-        email: req.body.email,
-    //    userid: req.body._id
+        emailAddress: req.body.emailAddress,
+        delAddress: req.body.delAddress,
+        order: req.body.order
 
-    //        name: currentUser.name,
-    //        email: currentUser.email
-    //        userid: currentUser._id,
-    //        orderItems: cartItems,
-    //        orderAmount: subtotal
     })
 
-    // save newPairings document to the database
+    // save newOrder document to the database
     newOrder.save()
         .then((order) => {
-            // send back 201 status and new pairings object
+            // send back 201 status and new order object
             res.status(201).json(order)
         })
         .catch((err) => {

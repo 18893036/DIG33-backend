@@ -5,13 +5,9 @@ require('mongoose-type-email')
 
 const ordersSchema= mongoose.Schema({
     name : {type: String , require},
-    email: {type: String , require},
-    userid : {type: String , require},
-    orderItems : [],
-    shippingAddress : {type:Object},
-    orderAmount : {type:Number , require},
-    isDelivered : {type:Boolean , require , default: false},
-    transactionId : {type:String , require, default: false}
+    emailAddress: {type: String , require},
+    delAddress : {type: String , require},
+    order : []
 },{
     timestamps : true
 })
@@ -21,3 +17,14 @@ const ordersModel = mongoose.model('Orders', ordersSchema, 'orders')   // this p
 
 // export as module to use in other files 
 module.exports = ordersModel
+
+/*
+    name : {type: String , require},
+    email: {type: String , require},
+    userid : {type: String , require},
+    orderItems : [],
+    shippingAddress : {type:Object},
+    orderAmount : {type:Number , require},
+    isDelivered : {type:Boolean , require , default: false},
+    transactionId : {type:String , require, default: false}
+    */
