@@ -123,6 +123,30 @@ router.delete('/:id', (req, res) => {
 
 
 
+router.post("/activatemerchandise", async (req, res) => {
+    const merchid = req.body.merchid;
+    try {
+      const merch = await Merch.findOne({ _id: merchid });
+      merch.isDelivered = true;
+      await merch.save();
+      res.send("Merch Delivered Successfully");
+    } catch (error) {
+      return res.status(400).json({ message: error });
+    }
+  });
+
+  router.post("/deactivatemerchandise", async (req, res) => {
+    const merchid = req.body.merchid;
+    try {
+      const merch = await Merch.findOne({ _id: merchid });
+      merch.isDelivered = true;
+      await merch.save();
+      res.send("Merch Delivered Successfully");
+    } catch (error) {
+      return res.status(400).json({ message: error });
+    }
+  });
+
 
 
 module.exports = router
