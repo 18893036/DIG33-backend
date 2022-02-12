@@ -146,17 +146,35 @@ router.put('/deactivatemerchandise/:id', (req, res) => {
     }
 
     // update merchandise using the Merchandise model
-    Merchandise.findByIdAndUpdate(req.params.id, req.body, { isActive: false })
-        .then((merchandise) => {
-            res.json(merchandise)
-        })
-        .catch((err) => {
-            console.log("error getting merchandise", err)
-            res.status(500).json({
-                message: "problem getting merchandise",
-                error: err
-            })
-        })
+    Merchandise.findByIdAndUpdate(
+        { _id: req.params.id },
+        { isActive: "false" },
+        function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        }
+    );
 })
+
+
+
+
+router.route("/update").post(function (req, res) {
+    Merchandise.findByIdAndUpdate(
+        { _id: merchid },
+        { isActive: "false" },
+        function (err, result) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(result);
+            }
+        }
+    );
+});
+
 
 module.exports = router
