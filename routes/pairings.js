@@ -174,6 +174,27 @@ router.put('/deactivatepairings/:id', (req, res) => {
     })
 
 
+    router.post("/editpairing", async(req, res) => {
 
+        const editedPairing = req.body.editedPairing
+    
+        try {
+            const pairings = await Pairings.findOne({_id : editedPairing._id})
+            
+            pairings.name= editedPairing.name,
+            pairings.description= editedPairing.description,
+            pairings.image= editedPairing.image,
+            pairings.category=editedPairing.category,
+            pairings.prices = [editedPairing.prices]
+    
+            await pairings.save()
+    
+            res.send('Pairing Details Edited successfully')
+    
+        } catch (error) {
+            return res.status(400).json({ message: error });
+        }
+      
+    });
 
 module.exports = router
