@@ -123,19 +123,28 @@ router.delete('/:id', (req, res) => {
 
 
 
-router.post("/activatemerchandise/", async (req, res) => {
-    const merchId = req.body.id;
-    const merchStatus = 'true';
-    try {
-        const merch = await Merch.findOne({ _id: merchid });
-        console.log(merchid);
-        merch.isActive = 'true';
-        await merch.save();
-        res.send("Merch Now Active");
-    } catch (error) {
-        return res.status(400).json({ message: error });
+router.put("/activatemerchandise/:id", async (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({
+            message: "merchandise content is empty"
+        })
     }
-});
+    const update = {
+        isActive: true
+    }
+    // update merchandise using the Merchandise model
+    Merchandise.findByIdAndUpdate(req.params.id, update, { new: true })
+        .then((merchandise) => {
+            res.json(merchandise)
+        })
+        .catch((err) => {
+            console.log("error getting merchandise", err)
+            res.status(500).json({
+                message: "problem getting merchandise",
+                error: err
+            })
+        })
+})
 
 
 
