@@ -127,6 +127,7 @@ router.post("/activatemerchandise", async (req, res) => {
     const merchid = req.body.merchid;
     try {
       const merch = await Merch.findOne({ _id: merchid });
+      console.log(merchid);
       merch.isActive = true;
       await merch.save();
       res.send("Merch Now Active");
