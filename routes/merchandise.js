@@ -123,7 +123,7 @@ router.delete('/:id', (req, res) => {
 
 
 
-router.put("/activatemerchandise/", async (req, res) => {
+router.put("/activatemerchandise/:id", async (req, res) => {
     const merchid = req.body.id;
     try {
         const merch = await Merch.findOne({ _id: merchid });
