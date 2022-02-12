@@ -127,9 +127,9 @@ router.post("/activatemerchandise", async (req, res) => {
     const merchid = req.body.merchid;
     try {
       const merch = await Merch.findOne({ _id: merchid });
-      merch.isDelivered = true;
+      merch.isActive = true;
       await merch.save();
-      res.send("Merch Delivered Successfully");
+      res.send("Merch Now Active");
     } catch (error) {
       return res.status(400).json({ message: error });
     }
@@ -139,9 +139,9 @@ router.post("/activatemerchandise", async (req, res) => {
     const merchid = req.body.merchid;
     try {
       const merch = await Merch.findOne({ _id: merchid });
-      merch.isDelivered = true;
+      merch.isActive = false;
       await merch.save();
-      res.send("Merch Delivered Successfully");
+      res.send("Merch Now Deactivated");
     } catch (error) {
       return res.status(400).json({ message: error });
     }
