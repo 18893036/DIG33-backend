@@ -123,8 +123,9 @@ router.delete('/:id', (req, res) => {
 
 
 
-router.post("/activatemerchandise/:id", async (req, res) => {
-    const merchid = req.body.id;
+router.post("/activatemerchandise/", async (req, res) => {
+    const merchId = req.body.id;
+    const merchStatus = 'true';
     try {
         const merch = await Merch.findOne({ _id: merchid });
         console.log(merchid);
@@ -139,25 +140,29 @@ router.post("/activatemerchandise/:id", async (req, res) => {
 
 
 router.put('/deactivatemerchandise/:id', (req, res) => {
-    if (!req.body) {
-        return res.status(400).json({
-            message: "merchandise content is empty"
-        })
-    }
-
-    // update merchandise using the Merchandise model
-    Merchandise.findByIdAndUpdate(
-        { _id: req.params.id },
-        { isActive: "false" },
-        function (err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(result);
-            }
+        if (!req.body) {
+            return res.status(400).json({
+                message: "merchandise content is empty"
+            })
         }
-    );
-})
+    
+        const update = {
+            isActive = 'false'
+        }
+
+        // update merchandise using the Merchandise model
+        Merchandise.findByIdAndUpdate(req.params.id, update, { new: true })
+            .then((merchandise) => {
+                res.json(merchandise)
+            })
+            .catch((err) => {
+                console.log("error getting merchandise", err)
+                res.status(500).json({
+                    message: "problem getting merchandise",
+                    error: err
+                })
+            })
+    })
 
 
 
