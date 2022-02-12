@@ -98,14 +98,14 @@ router.put('/:id', (req, res) => {
 // DELETE - delete merchandise by ID --------------------------------------------------------------
 router.delete('/:id', (req, res) => {
     // validate that there is a merchandise id
-    if(!req.params.id){
+    if (!req.params.id) {
         return res.status(400).json({
             message: "merchandise id is missing!"
         })
     }
 
     // delete the merchandise using the Merchandise model
-    Merchandise.findOneAndDelete({_id: req.params.id})
+    Merchandise.findOneAndDelete({ _id: req.params.id })
         .then(() => {
             res.json({
                 message: "merchandise deleted"
@@ -118,36 +118,45 @@ router.delete('/:id', (req, res) => {
                 error: err
             })
         })
-        
+
 })
 
 
 
 router.post("/activatemerchandise", async (req, res) => {
-    const merchid = req.body;
-    try {
-      const merch = await Merch.findOne({ _id: merchid });
-      console.log(merchid);
-      merch.isActive = true;
-      await merch.save();
-      res.send("Merch Now Active");
-    } catch (error) {
-      return res.status(400).json({ message: error });
-    }
-  });
-
-  router.post("/deactivatemerchandise", async (req, res) => {
     const merchid = req.body.merchid;
     try {
-      const merch = await Merch.findOne({ _id: merchid });
-      merch.isActive = false;
-      await merch.save();
-      res.send("Merch Now Deactivated");
+        const merch = await Merch.findOne({ _id: merchid });
+        console.log(merchid);
+        merch.isActive = true;
+        await merch.save();
+        res.send("Merch Now Active");
     } catch (error) {
-      return res.status(400).json({ message: error });
+        return res.status(400).json({ message: error });
     }
-  });
+});
 
 
+
+router.put('/deactivatemerchandise/:id', (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({
+            message: "merchandise content is empty"
+        })
+    }
+
+    // update merchandise using the Merchandise model
+    Merchandise.findByIdAndUpdate(req.params.id, req.body, { isActive: false })
+        .then((merchandise) => {
+            res.json(merchandise)
+        })
+        .catch((err) => {
+            console.log("error getting merchandise", err)
+            res.status(500).json({
+                message: "problem getting merchandise",
+                error: err
+            })
+        })
+})
 
 module.exports = router
