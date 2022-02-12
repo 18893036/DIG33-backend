@@ -20,6 +20,10 @@ const merchandiseSchema = new mongoose.Schema({
     itemCost: {
         type: String,
         require: true
+    },
+    isActive: {
+        type: Boolean,
+        require: true
     }
 }, {timestamps: true})
 
