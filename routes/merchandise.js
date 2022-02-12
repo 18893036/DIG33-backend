@@ -147,7 +147,7 @@ router.put('/deactivatemerchandise/:id', (req, res) => {
         }
     
         const update = {
-            isActive = false
+            isActive: false
         }
 
         // update merchandise using the Merchandise model
