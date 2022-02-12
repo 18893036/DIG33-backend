@@ -124,7 +124,7 @@ router.delete('/:id', (req, res) => {
 
 
 router.put("/activatemerchandise/", async (req, res) => {
-    const merchid = req.params.id;
+    const merchid = req.body.id;
     try {
         const merch = await Merch.findOne({ _id: merchid });
         console.log(merchid);
