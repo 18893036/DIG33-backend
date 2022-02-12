@@ -123,5 +123,57 @@ router.delete('/:id', (req, res) => {
 
 
 
+router.put("/activatepairings/:id", async (req, res) => {
+    if (!req.body) {
+        return res.status(400).json({
+            message: "pairings content is empty"
+        })
+    }
+    const update = {
+        isActive: true
+    }
+    // update pairings using the pairings model
+    Pairings.findByIdAndUpdate(req.params.id, update, { new: true })
+        .then((pairings) => {
+            res.json(pairings)
+        })
+        .catch((err) => {
+            console.log("error getting pairings", err)
+            res.status(500).json({
+                message: "problem getting pairings",
+                error: err
+            })
+        })
+})
+
+
+
+router.put('/deactivatepairings/:id', (req, res) => {
+        if (!req.body) {
+            return res.status(400).json({
+                message: "pairings content is empty"
+            })
+        }
+    
+        const update = {
+            isActive: false
+        }
+
+        // update pairings using the pairings model
+        Pairings.findByIdAndUpdate(req.params.id, update, { new: true })
+            .then((pairings) => {
+                res.json(pairings)
+            })
+            .catch((err) => {
+                console.log("error getting pairings", err)
+                res.status(500).json({
+                    message: "problem getting pairings",
+                    error: err
+                })
+            })
+    })
+
+
+
 
 module.exports = router

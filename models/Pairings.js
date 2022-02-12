@@ -16,6 +16,10 @@ const pairingsSchema = new mongoose.Schema({
     ingredients: {
         type: String,
         require: true
+    },
+    isActive: {
+        type: Boolean,
+        require: true
     }
 }, {timestamps: true})
 
