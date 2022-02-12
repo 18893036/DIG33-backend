@@ -123,7 +123,7 @@ router.delete('/:id', (req, res) => {
 
 
 
-router.post("/activatemerchandise", async (req, res) => {
+router.post("/activatemerchandise/", async (req, res) => {
     const merchid = req.body.merchid;
     try {
         const merch = await Merch.findOne({ _id: merchid });
@@ -160,21 +160,6 @@ router.put('/deactivatemerchandise/:id', (req, res) => {
 })
 
 
-
-
-router.route("/update").post(function (req, res) {
-    Merchandise.findByIdAndUpdate(
-        { _id: merchid },
-        { isActive: "false" },
-        function (err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.send(result);
-            }
-        }
-    );
-});
 
 
 module.exports = router
