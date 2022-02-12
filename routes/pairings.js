@@ -174,6 +174,21 @@ router.put('/deactivatepairings/:id', (req, res) => {
     })
 
 
+    router.post("/getpairingbyid", async(req, res) => {
+
+        const pairingid = req.body.pairingid
+       
+        try {
+            const pairing = await Pairings.findOne({_id : pairingid})
+            res.send(pairing)
+        } catch (error) {
+            return res.status(400).json({ message: error });
+        }
+         
+       });
+       
+
+
     router.post("/editpairing", async(req, res) => {
 
         const editedPairing = req.body.editedPairing
