@@ -17,6 +17,10 @@ const pairingsSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    image: {
+        type: String,
+        require: true
+    },
     isActive: {
         type: Boolean,
         require: true
