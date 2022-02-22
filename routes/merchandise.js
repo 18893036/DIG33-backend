@@ -50,7 +50,8 @@ router.post('/', (req, res) => {
         itemType: req.body.itemType,
         itemName: req.body.itemName,
         itemSize: req.body.itemSize,
-        itemCost: req.body.itemCost
+        itemCost: req.body.itemCost,
+        image: req.body.image
     })
 
     // save newMerchandise document to the database

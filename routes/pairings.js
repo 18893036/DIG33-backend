@@ -49,7 +49,8 @@ router.post('/', (req, res) => {
     const newPairings = new Pairings({
         pigProduct: req.body.pigProduct,
         dishName: req.body.dishName,
-        ingredients: req.body.ingredients
+        ingredients: req.body.ingredients,
+        image: req.body.image
     })
 
     // save newPairings document to the database

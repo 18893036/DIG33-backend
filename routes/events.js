@@ -47,8 +47,8 @@ router.post('/', (req, res) => {
 
     // create events if req above is good and data is in the body
     const newEvents = new Events({
-        eventTitle: req.body.eventTitle,
-        eventLocation: req.body.eventTitle,
+        eventName: req.body.eventName,
+        eventAddress: req.body.eventAddress,
         image: req.body.image
     })
 

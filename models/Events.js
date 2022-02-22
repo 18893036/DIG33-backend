@@ -5,11 +5,11 @@ require('mongoose-type-email')
 
 //  schema
 const eventsSchema = new mongoose.Schema({
-    eventTitle: {
+    eventName: {
         type: String,
         require: true
     },
-    eventLocation: {
+    eventAddress: {
         type: String,
         require: true
     },
