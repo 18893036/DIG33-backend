@@ -15,6 +15,9 @@ const eventsSchema = new mongoose.Schema({
     },
     image: {
         type: String
+    },
+    isActive: {
+        type: Boolean
     }
 }, {timestamps: true})
 
