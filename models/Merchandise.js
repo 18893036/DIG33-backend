@@ -13,10 +13,6 @@ const merchandiseSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    itemSize: {
-        type: String,
-        require: true
-    },
     itemCost: {
         type: String,
         require: true
